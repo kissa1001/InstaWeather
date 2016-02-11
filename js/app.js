@@ -11,7 +11,8 @@ $(function(){
 					country: result.sys.country,
 					lattitude: result.coord.lat,
 					longitude: result.coord.lon,
-					weather: result.weather[0].main
+					weather: result.weather[0].main,
+					temp: result.main.temp
 				};
 			});
 			console.log(cityInfo);
