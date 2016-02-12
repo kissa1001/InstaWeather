@@ -7,11 +7,90 @@
 	<link rel="shortcut icon" href="img/shortcut-icon.png"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One|Pacifico' rel='stylesheet' type='text/css'>
 	<!--Bootstrap-->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script type="text/x-handlebars" id="city-template">
+	<div class="city city-{{id}}"><h1>{{cityName}}-{{country}}</h1></div>
+	</script>
+	<script type="text/x-handlebars" id="photo-template">
+	<div class="photo"><span>{{username}}</span>
+	<img src= "{{url}}" alt="{{caption}}"/></div>
+	</script>
 </head>
 <body>
-	
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Insta<span>Weather</span></a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active reset"><a href="#">Reset <i class="fa fa-refresh fa-spin"></i></a></li>
+				<li id="howTo"><a href="#">What?</a></li> 
+			</ul>
+		</div>
+	</nav>
+	<div id="weather">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="condition clear" style="background-color:#f2395b;">
+						<img src="img/clear.png" alt="clear">
+						<span class="text-center">Clear</span>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="condition mist" style="background-color:#36b1c0;">
+						<img src="img/mist.png" alt="mist">
+						<span class="text-center">Mist</span>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="condition clouds" style="background-color:#f2854c;">
+						<img src="img/clouds.png" alt="clouds">
+						<span class="text-center">Clouds</span>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="condition rain" style="background-color:#1e9e49;">
+						<img src="img/rain.png" alt="rain">
+						<span class="text-center">Rain</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="condition thunderstorm" style="background-color:#9db7d0;">
+						<img src="img/thunderstorm.png" alt="thunderstorm">
+						<span class="text-center">Thunderstorm</span>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="condition snow" style="background-color:#675680;">
+						<img src="img/snow.png" alt="snow">
+						<span class="text-center">Snow</span>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="condition haze" style="background-color:#e9b841;">
+						<img src="img/haze.png" alt="haze">
+						<span class="text-center">Haze</span>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="condition fog" style="background-color:#cb5e87;">
+						<img src="img/fog.png" alt="fog">
+						<span class="text-center">Fog</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="cities"></div>
+	<footer class="text-center">
+		<p>Thank you for using my App</p>
+		<p>Built with love by <span>Kissa</span> <i class="fa fa-heart"></i></p>
+	</footer>
 	<!--Javascript & jQuery-->
 	<script src="js/jquery-2.1.4.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
