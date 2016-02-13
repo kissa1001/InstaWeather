@@ -11,7 +11,6 @@ body{
   font-family: 'Bitter', serif;
 }
 #weather{
-  /*display:none;*/
 	width:100vw;
 }
 #cities{
@@ -67,7 +66,7 @@ body{
 }
 .condition:hover{
   opacity:0.5;
-  transition: 4s ease;
+  transition: 0.5s ease;
 }
 #weather span{
 	color:#fff;
