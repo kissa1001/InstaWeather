@@ -7,15 +7,120 @@
 	<link rel="shortcut icon" href="img/shortcut-icon.png"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Poiret+One|Pacifico' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
 	<!--Bootstrap-->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script type="text/x-handlebars" id="city-template">
+		<div class="city">
+			<div class="head">
+				<h1>{{cityName}} - {{country}}</h1>
+				<h2>Temperature at this moment is: <strong>{{temp}}°C</strong></h2>
+			</div>
+			<div class="grid city-{{id}}"></div>	
+		</div>
+	</script>
+
+	<script type="text/x-handlebars" id="photo-template">
+			<div class="photo">
+				<img class="hover" src="{{url}}" alt="{{caption}}">
+				<span class="caption">
+					<strong>Username:</strong> {{username}}
+					<br>
+					<strong>Caption:</strong> {{caption}}
+				</span>
+			</div>	
+	 </script>
 </head>
 <body>
-	
-	<!--Javascript & jQuery-->
-	<script src="js/jquery-2.1.4.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="js/handlebars-v4.0.5.js"></script>
-	<script src="js/app.js"></script>
+	<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Insta<span>Weather</span></a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active reset"><a class="reset" href="#">Reset <i class="fa fa-refresh fa-spin"></i></a></li>
+				<li><a class="what" href="#">What?</a></li> 
+			</ul>
+		</div>
+	</nav>
+	<div id="weather">
+		<div class="container" style="margin:0 0; padding: 0 0;width:100vw; overflow:hidden;">
+			<div class="row" style="margin:0 0;">
+				<div class="col-sm-3" style="padding: 0 0;margin:0 0;">
+					<div class="condition clear" style="background-color:#0050A1;">
+						<img src="img/clear.png" alt="clear">
+						<span class="text-center">Clear</span>
+					</div>
+				</div>
+				<div class="col-sm-3" style="padding: 0 0;margin:0 0;">
+					<div class="condition mist" style="background-color:#0CEB51;">
+						<img src="img/mist.png" alt="mist">
+						<span class="text-center">Mist</span>
+					</div>
+				</div>
+				<div class="col-sm-3" style="padding: 0 0;margin:0 0;">
+					<div class="condition clouds" style="background-color:#00376E;">
+						<img src="img/clouds.png" alt="clouds">
+						<span class="text-center">Clouds</span>
+					</div>
+				</div>
+				<div class="col-sm-3" style="padding: 0 0;margin:0 0;">
+					<div class="condition rain" style="background-color:#DA2E00;">
+						<img src="img/rain.png" alt="rain">
+						<span class="text-center">Rain</span>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin:0 0;">
+				<div class="col-sm-3" style="padding: 0 0;margin:0 0;">
+					<div class="condition thunderstorm" style="background-color:#A13F38;">
+						<img src="img/thunderstorm.png" alt="thunderstorm">
+						<span class="text-center">Thunderstorm</span>
+					</div>
+				</div>
+				<div class="col-sm-3" style="padding: 0 0;margin:0 0;">
+					<div class="condition snow" style="background-color:#002CD4;">
+						<img src="img/snow.png" alt="snow">
+						<span class="text-center">Snow</span>
+					</div>
+				</div>
+				<div class="col-sm-3" style="padding: 0 0;margin:0 0;">
+					<div class="condition haze" style="background-color:#DC4F26;">
+						<img src="img/haze.png" alt="haze">
+						<span class="text-center">Haze</span>
+					</div>
+				</div>
+				<div class="col-sm-3" style="padding: 0 0;margin:0 0;">
+					<div class="condition fog" style="background-color:#5AA110;">
+						<img src="img/fog.png" alt="fog">
+						<span class="text-center">Fog</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="cities" class="panel-group"></div>
+	<div class="overlay" id="modal">
+		<div class="content">
+			<h3>What do I do?</h3>
+			<div>
+				<p>This is a InstaWeather App, with this App you can choose any weather conditions and after clicking the App will show all cities that has this weather condition that time and Instagram pictures in this location.</p>
+				<p>So, Are you ready?</p>
+				<a class="close" href="#"><span>Got It!</span></a>
+			</div>
+		</div>
+	</div>
+<footer class="text-center">
+	<p>Thank you for using my App</p>
+	<p>Built with love by <span>Kissa</span> <i class="fa fa-heart"></i></p>
+</footer>
+<!--Javascript & jQuery-->
+<script src="js/jquery-2.1.4.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="js/handlebars-v4.0.5.js"></script>
+<script src="js/masonry.min.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

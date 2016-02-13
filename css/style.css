@@ -1,0 +1,201 @@
+body{
+	font-family: 'Poiret One', cursive;
+}
+.navbar-brand{
+	font-family: 'Pacifico', cursive;
+}
+.navbar-brand span{
+	font-family: 'Poiret One', cursive;
+}
+.navbar-right a{
+  font-family: 'Bitter', serif;
+}
+#weather{
+	width:100vw;
+}
+#cities{
+	display:none;
+}
+.head{
+  border-bottom: 1px solid #000;
+  border-top:  1px solid #000;
+}
+.city h1 {
+  margin-top: 2em;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  text-decoration: underline;
+}
+.city h2 {
+  text-align: center;
+  font-family: 'Poiret One', cursive;
+  color:#000;
+  margin-bottom: 2em;
+}
+.photo{
+  width: 25%;
+  float: left;
+  cursor:pointer;
+}
+.photo img {
+    display: block;
+}
+.photo .caption {
+    opacity: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2em 0em;
+    color: #ffffff;
+    background: #000000;
+    text-decoration: none;
+    text-align: center;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+
+}
+.photo:hover .caption {
+    opacity: 0.8;
+}
+.caption{
+  font-size: 1.2em;
+  font-family: 'Poiret One', cursive;
+}
+.condition:hover{
+  opacity:0.5;
+  transition: 0.5s ease;
+}
+#weather span{
+	color:#fff;
+  font-family: 'Bitter', serif;
+  font-size: 1.5em;
+}
+.condition{
+  padding-top:5em;
+  padding-bottom:4.9em;
+  padding-left:1em;
+  cursor: pointer;
+}
+.alert{
+  display: none;
+}
+#modal{
+  display:none;
+}
+/*style for hidden modal*/
+.overlay {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: #DC426D;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  z-index: 1000;
+  display: none;
+}
+
+.content {
+  color: #fff;
+  background: #D4003C;
+  position: relative;
+  height: auto;
+  width: 600px;
+  border-radius: 3px;
+  top: 15%;
+  margin: auto auto;
+  border: 1px solid #fff;
+}
+
+.content h3 {
+  font-family: 'Pacifico', cursive;
+  margin: 0;
+  padding: 0.4em;
+  text-align: center;
+  font-size: 2.4em;
+  font-weight: 300;
+  opacity: 0.8;
+  background: #55192A;
+  border-radius: 3px 3px 0 0;
+}
+
+.content > div {
+  padding: 15px 40px 30px;
+  margin: 0;
+}
+
+.content > div p {
+  font-family: 'Poiret One', cursive;
+  font-size: 1.5em;
+  margin: 0;
+  padding: 10px 0;
+  line-height: 2em;
+  text-align: justify;
+}
+content > div span{
+  font-family: 'Bitter', serif;
+  color:#55192A;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+footer{
+	background-color: #000;
+	padding:1em 0;
+}
+footer p{
+	font-family: 'Poiret One', cursive;
+	color:#fff;
+}
+footer span{
+	font-family: 'Pacifico', cursive;
+	color:#fff;
+}
+footer i {
+	color:#fff;
+  -webkit-animation-name: pulse;
+  -moz-animation-name: pulse;
+  -webkit-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+}
+
+@-webkit-keyframes pulse {    
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-moz-keyframes pulse {    
+  0% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+
+  100% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
