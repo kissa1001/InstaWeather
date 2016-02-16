@@ -20,6 +20,9 @@ body{
   border-bottom: 1px solid #000;
   border-top:  1px solid #000;
 }
+.city{
+  clear:both;
+}
 .city h1 {
   margin-top: 2em;
   text-align: center;
@@ -143,6 +146,7 @@ content > div span{
   margin-bottom: 1em;
 }
 footer{
+  clear:both;
 	background-color: #000;
 	padding:1em 0;
 }
