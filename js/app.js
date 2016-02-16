@@ -17,7 +17,6 @@ $(function(){
 					temp: result.main.temp
 				};
 			});
-			console.log(cityInfo);
 			function weatherHandler(weather){
 				$('#weather').fadeOut(500);
 				$('#cities').fadeIn(500);
