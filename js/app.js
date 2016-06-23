@@ -28,29 +28,40 @@ $(function(){
 					$('#weather').fadeIn();
 				}
 				$.each(filteredCities, function(index, city){
-				$('#cities').append(cityTemplate(city));
-				$.ajax({
-					url:'https://api.instagram.com/v1/media/search?lat=' + city.lattitude + '&lng='+city.longitude+ '&client_id=d49da08a520f47cbb6e7618f077f33ef',
-					method: 'get',
-					dataType: 'jsonp',
-					context: city,
-					success: function (data) {
-						var city =this;
-						var photoInfo = $.map(data.data, function(result){
+					$('#cities').append(cityTemplate(city));
+					var params = {
+						"q": city.cityName + " " + city.weather + " weather",
+						"count": "10",
+						"offset": "0",
+						"mkt": "en-us",
+						"safeSearch": "Moderate",
+					};
+
+					$.ajax({
+						url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
+						beforeSend: function(xhrObj){
+							xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","ffa8b2e9e3be40e4b0020eb4f5da1f9c");
+						},
+						type: "GET",
+						data: "{body}",
+					})
+					.done(function(data) {
+						var photoInfo = $.map(data.value, function(result){
 							return {
-								city: city.id,
-								username: result.user.username,
-								url: result.images.low_resolution.url,
-								caption: result.caption ? result.caption.text : ''
+								url: result.contentUrl,
+								caption: result.name
 							}
 						})
-						
+
 						$.each(photoInfo, function(index, photo){
-							$('.city-'+ photo.city).append(photoTemplate(photo));
+							$('.city').append(photoTemplate(photo));
 						})
-					}
+
+					})
+					.fail(function() {
+						//Do nothing
+					});
 				})
-			})
 			}
 			$('.clear').on('click', function(){
 				weatherHandler('Clear');
@@ -78,22 +89,22 @@ $(function(){
 			})
 		}
 	});
-  	$(".what").click(function(){
-    	$(".overlay").fadeIn(1000);
+	$(".what").click(function(){
+		$(".overlay").fadeIn(1000);
 
-  	});
+	});
 
-  	$("a.close").click(function(){
-  		$(".overlay").fadeOut(1000);
-  	});
+	$("a.close").click(function(){
+		$(".overlay").fadeOut(1000);
+	});
 
-  	$('a.reset, a.navbar-brand').click(function(){
-  		location.reload();
-  	});
+	$('a.reset, a.navbar-brand').click(function(){
+		location.reload();
+	});
 
 	var $container = jQuery('.grid');
-		$container.masonry({
-  		columnWidth: 200,
-  		itemSelector: '.photo'
+	$container.masonry({
+		columnWidth: 200,
+		itemSelector: '.photo'
 	});
 });
