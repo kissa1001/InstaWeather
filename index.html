@@ -23,10 +23,8 @@
 
 	<script type="text/x-handlebars" id="photo-template">
 			<div class="photo">
-				<img class="hover" src="{{url}}" alt="{{caption}}">
+				<img class="hover img-thumbnail img-responsive" src="{{url}}" alt="{{caption}}">
 				<span class="caption">
-					<strong>Username:</strong> {{username}}
-					<br>
 					<strong>Caption:</strong> {{caption}}
 				</span>
 			</div>	
@@ -100,7 +98,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="cities" class="panel-group"></div>
+	<div id="cities"></div>
 	<div class="overlay" id="modal">
 		<div class="content">
 			<h3>What do I do?</h3>

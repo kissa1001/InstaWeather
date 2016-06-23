@@ -2,7 +2,7 @@ $(function(){
 	var cityTemplate = Handlebars.compile($('#city-template').html());
 	var photoTemplate = Handlebars.compile($('#photo-template').html());
 	$.ajax({
-		url: 'http://api.openweathermap.org/data/2.5/group?id=5368361,5391959,5128581,3448439,2968815,2643743,703448,524901,498817,1526273,1581130,1816670,1609350,2147714,1835848,3128832,6094817,2950158,3169070,360630,292223,1850147,3646738,7284824,3530597,264371,2761369,3571824,727011,3553478,281184,683506,108410,1880252,8133876&units=metric&appid=f38b50bfb853fd8b0ad343b91357f364' ,
+		url: 'http://api.openweathermap.org/data/2.5/group?id=5368361,5391959,5128581,3448439,2968815,2643743,703448,524901,498817,1526273,1581130,1816670,1609350,2147714,1835848,3128832,6094817,2950158,3169070,360630,292223,1850147,3646738,7284824,3530597,264371,2761369,3571824,727011,3553478,281184,683506,108410,1880252,8133876,5037649,2015306&units=metric&appid=f38b50bfb853fd8b0ad343b91357f364' ,
 		method: 'get' ,
 		dataType: 'json',
 		success: function(data) {
@@ -28,29 +28,40 @@ $(function(){
 					$('#weather').fadeIn();
 				}
 				$.each(filteredCities, function(index, city){
-				$('#cities').append(cityTemplate(city));
-				$.ajax({
-					url:'https://api.instagram.com/v1/media/search?lat=' + city.lattitude + '&lng='+city.longitude+ '&client_id=d49da08a520f47cbb6e7618f077f33ef',
-					method: 'get',
-					dataType: 'jsonp',
-					context: city,
-					success: function (data) {
-						var city =this;
-						var photoInfo = $.map(data.data, function(result){
+					$('#cities').append(cityTemplate(city));
+					var params = {
+						"q": city.cityName + " " + city.weather + " weather",
+						"count": "10",
+						"offset": "0",
+						"mkt": "en-us",
+						"safeSearch": "Moderate",
+					};
+
+					$.ajax({
+						url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
+						beforeSend: function(xhrObj){
+							xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","ffa8b2e9e3be40e4b0020eb4f5da1f9c");
+						},
+						type: "GET",
+						data: "{body}",
+					})
+					.done(function(data) {
+						var photoInfo = $.map(data.value, function(result){
 							return {
-								city: city.id,
-								username: result.user.username,
-								url: result.images.low_resolution.url,
-								caption: result.caption ? result.caption.text : ''
+								url: result.contentUrl,
+								caption: result.name
 							}
 						})
-						
+
 						$.each(photoInfo, function(index, photo){
-							$('.city-'+ photo.city).append(photoTemplate(photo));
+							$('.city').append(photoTemplate(photo));
 						})
-					}
+
+					})
+					.fail(function() {
+						//Do nothing
+					});
 				})
-			})
 			}
 			$('.clear').on('click', function(){
 				weatherHandler('Clear');
@@ -78,22 +89,22 @@ $(function(){
 			})
 		}
 	});
-  	$(".what").click(function(){
-    	$(".overlay").fadeIn(1000);
+	$(".what").click(function(){
+		$(".overlay").fadeIn(1000);
 
-  	});
+	});
 
-  	$("a.close").click(function(){
-  		$(".overlay").fadeOut(1000);
-  	});
+	$("a.close").click(function(){
+		$(".overlay").fadeOut(1000);
+	});
 
-  	$('a.reset, a.navbar-brand').click(function(){
-  		location.reload();
-  	});
+	$('a.reset, a.navbar-brand').click(function(){
+		location.reload();
+	});
 
 	var $container = jQuery('.grid');
-		$container.masonry({
-  		columnWidth: 200,
-  		itemSelector: '.photo'
+	$container.masonry({
+		columnWidth: 200,
+		itemSelector: '.photo'
 	});
 });
