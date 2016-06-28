@@ -1,5 +1,9 @@
-body{
+html,body{
 	font-family: 'Poiret One', cursive;
+  background-color: #333;
+}
+body .navbar {
+    border-radius: 0px;
 }
 .navbar-brand{
 	font-family: 'Pacifico', cursive;
@@ -9,6 +13,11 @@ body{
 }
 .navbar-right a{
   font-family: 'Bitter', serif;
+}
+.wi{
+  color:#fff;
+  font-size:6em;
+  margin-left: 10%;
 }
 #weather{
 	width:100vw;
@@ -35,13 +44,17 @@ body{
   color:#000;
   margin-bottom: 2em;
 }
-.photo{
-  width: 25%;
-  float: left;
-  cursor:pointer;
-}
 .photo img {
-  display: block;
+    width: 100%;
+    height: auto;
+    min-height: 170px;
+}
+.photo {
+    width: 25%;
+    float: left;
+    cursor: pointer;
+    height: 170px;
+    overflow: hidden;
 }
 .photo .caption {
   opacity: 0;
@@ -77,23 +90,21 @@ body{
   font-size: 1.5em;
 }
 .condition{
-  padding-top:5em;
-  padding-bottom:4.9em;
+  padding-top:5.5em;
+  padding-bottom:5.5em;
   padding-left:1em;
   cursor: pointer;
 }
-.alert{
-  display: none;
-}
+
 #modal{
   display:none;
 }
 /*style for hidden modal*/
-.overlay {
+.overlay, .alert-box {
   width: 100%;
   height: 100%;
   color: #fff;
-  background: #DC426D;
+  background: rgba(0,0,0,0.7);
   position: absolute;
   top: 0;
   left: 0;
@@ -102,11 +113,11 @@ body{
   display: none;
 }
 
-.content {
+.content, .alert {
   color: #fff;
-  background: #D4003C;
+  background: #444;
   position: relative;
-  height: auto;
+  height: 300px;
   max-width: 600px;
   border-radius: 3px;
   top: 15%;
@@ -122,7 +133,7 @@ body{
   font-size: 2.4em;
   font-weight: 300;
   opacity: 0.8;
-  background: #55192A;
+  background: #333;
   border-radius: 3px 3px 0 0;
 }
 
@@ -130,24 +141,38 @@ body{
   padding: 15px 40px 30px;
   margin: 0;
 }
-
+.alert > div{
+  margin: 0;
+}
 .content > div p {
   font-family: 'Poiret One', cursive;
-  font-size: 1.5em;
+  font-size: 1.2em;
   margin: 0;
   padding: 10px 0;
   line-height: 2em;
   text-align: justify;
 }
-content > div span{
-  font-family: 'Bitter', serif;
-  color:#55192A;
+.alert p{
+  font-family: 'Poiret One', cursive;
   font-size: 1.5em;
-  margin-bottom: 1em;
+  margin-top:40px;
+  padding: 10px 0;
+  line-height: 2em;
+  text-align: justify;
 }
+.content > div a{
+  color:#fff;
+}
+.content > div span{
+  font-family: 'Bitter', serif;
+  color:#fff;
+  font-size: 1em;
+  margin-bottom: 1.5em;
+}
+
 footer{
   clear:both;
-	background-color: #000;
+	background-color: #333;
 	padding:1em 0;
 }
 footer p{
@@ -201,5 +226,24 @@ footer i {
   100% {
     -moz-transform: scale(1);
     transform: scale(1);
+  }
+}
+
+@media only screen and (max-width : 500px){
+  .photo {
+    width: 100%;
+    height: 220px;
+  }
+}
+@media only screen and (min-width : 500px) and (max-width: 768px) {
+  .photo {
+    width: 50%;
+    height: 200px;
+  }
+}
+@media only screen and (min-width : 768px) and (max-width: 1024px) {
+  .photo {
+    width: 33.3%;
+    height: 180px;
   }
 }

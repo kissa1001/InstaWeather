@@ -24,7 +24,7 @@ $(function(){
 					return city.weather == weather;
 				});
 				if (filteredCities.length == 0) {
-					alert('Sorry! This weather is currently not matching any citites in our data list');
+					$(".alert-box").fadeIn(500);
 					$('#weather').fadeIn();
 				}
 				$.each(filteredCities, function(index, city){
@@ -84,18 +84,18 @@ $(function(){
 			$('.haze').on('click', function(){
 				weatherHandler('Haze');
 			})
-			$('.fog').on('click', function(){
-				weatherHandler('Fog');
+			$('.sand').on('click', function(){
+				weatherHandler('Sand');
 			})
 		}
 	});
 	$(".what").click(function(){
-		$(".overlay").fadeIn(1000);
-
+		$(".overlay").fadeIn(500);
 	});
 
-	$("a.close").click(function(){
-		$(".overlay").fadeOut(1000);
+	$("button.closeModal").click(function(){
+		$(".overlay").fadeOut(500);
+		$(".alert-box").fadeOut(500);
 	});
 
 	$('a.reset, a.navbar-brand').click(function(){
