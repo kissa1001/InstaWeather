@@ -84,8 +84,8 @@ $(function(){
 			$('.haze').on('click', function(){
 				weatherHandler('Haze');
 			})
-			$('.fog').on('click', function(){
-				weatherHandler('Fog');
+			$('.sand').on('click', function(){
+				weatherHandler('Sand');
 			})
 		}
 	});
