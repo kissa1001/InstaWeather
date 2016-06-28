@@ -31,7 +31,7 @@ $(function(){
 					$('#cities').append(cityTemplate(city));
 					var params = {
 						"q": city.cityName + " " + city.weather + " weather",
-						"count": "10",
+						"count": "24",
 						"offset": "0",
 						"mkt": "en-us",
 						"safeSearch": "Moderate",
