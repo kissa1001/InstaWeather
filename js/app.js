@@ -28,6 +28,7 @@ $(function(){
 					$('#weather').fadeIn();
 				}
 				$.each(filteredCities, function(index, city){
+					var city = this;
 					$('#cities').append(cityTemplate(city));
 					var params = {
 						"q": city.cityName + " " + city.weather + " weather",
@@ -43,25 +44,26 @@ $(function(){
 							xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","ffa8b2e9e3be40e4b0020eb4f5da1f9c");
 						},
 						type: "GET",
-						data: "{body}",
+						data: "{body}"
 					})
 					.done(function(data) {
 						var photoInfo = $.map(data.value, function(result){
 							return {
+								city: city.id,
 								url: result.contentUrl,
 								caption: result.name
 							}
 						})
 
 						$.each(photoInfo, function(index, photo){
-							$('.city').append(photoTemplate(photo));
+							$('.city-'+ photo.city).append(photoTemplate(photo));
 						})
 
 					})
 					.fail(function() {
 						//Do nothing
 					});
-				})
+				 })
 			}
 			$('.clear').on('click', function(){
 				weatherHandler('Clear');
@@ -89,22 +91,22 @@ $(function(){
 			})
 		}
 	});
-	$(".what").click(function(){
-		$(".overlay").fadeIn(500);
-	});
+				$(".what").click(function(){
+					$(".overlay").fadeIn(500);
+				});
 
-	$("button.closeModal").click(function(){
-		$(".overlay").fadeOut(500);
-		$(".alert-box").fadeOut(500);
-	});
+				$("button.closeModal").click(function(){
+					$(".overlay").fadeOut(500);
+					$(".alert-box").fadeOut(500);
+				});
 
-	$('a.reset, a.navbar-brand').click(function(){
-		location.reload();
-	});
+				$('a.reset, a.navbar-brand').click(function(){
+					location.reload();
+				});
 
-	var $container = jQuery('.grid');
-	$container.masonry({
-		columnWidth: 200,
-		itemSelector: '.photo'
-	});
-});
+				var $container = jQuery('.grid');
+				$container.masonry({
+					columnWidth: 200,
+					itemSelector: '.photo'
+				});
+			});
