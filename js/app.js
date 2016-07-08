@@ -27,7 +27,7 @@ $(function(){
 					$(".alert-box").fadeIn(500);
 					$('#weather').fadeIn();
 				}
-				$.each(filteredCities, function(index, city){
+				$.each(filteredCities.slice(0, 7), function(index, city){
 					var city = this;
 					$('#cities').append(cityTemplate(city));
 					var params = {
