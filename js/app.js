@@ -14,7 +14,7 @@ $(function(){
 					lattitude: result.coord.lat,
 					longitude: result.coord.lon,
 					weather: result.weather[0].main,
-					temp: result.main.temp.toFixed(0)/10
+					temp: result.main.temp
 				};
 			});
 			function weatherHandler(weather){
