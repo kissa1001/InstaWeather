@@ -23,7 +23,7 @@ $(function(){
 				var filteredCities= _.filter(cityInfo, function(city){
 					return city.weather == weather;
 				});
-				if (filteredCities.length == 0) {
+				if (filteredCities.length === 0) {
 					$(".alert-box").fadeIn(500);
 					$('#weather').fadeIn();
 				}
@@ -35,60 +35,61 @@ $(function(){
 						"count": "24",
 						"offset": "0",
 						"mkt": "en-us",
-						"safeSearch": "Moderate",
+						"safeSearch": "Moderate"
 					};
 
 					$.ajax({
 						url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
 						beforeSend: function(xhrObj){
-							xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","ffa8b2e9e3be40e4b0020eb4f5da1f9c");
-						},
+                			xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{c23cfb32ff35416083d4afc22518a3ba");
+            			},
 						type: "GET",
 						data: "{body}"
 					})
 					.done(function(data) {
+						console.log(data);
 						var photoInfo = $.map(data.value, function(result){
 							return {
 								city: city.id,
 								url: result.contentUrl,
 								caption: result.name
-							}
-						})
+							};
+						});
 
 						$.each(photoInfo, function(index, photo){
 							$('.city-'+ photo.city).append(photoTemplate(photo));
-						})
+						});
 
 					})
 					.fail(function() {
 						//Do nothing
 					});
-				 })
+				});
 			}
 			$('.clear').on('click', function(){
 				weatherHandler('Clear');
-			})
+			});
 			$('.mist').on('click', function(){
 				weatherHandler('Mist');
-			})
+			});
 			$('.clouds').on('click', function(){
 				weatherHandler('Clouds');
-			})
+			});
 			$('.rain').on('click', function(){
 				weatherHandler('Rain');
-			})
+			});
 			$('.thunderstorm').on('click', function(){
 				weatherHandler('Thunderstorm');
-			})
+			});
 			$('.snow').on('click', function(){
 				weatherHandler('Snow');
-			})
+			});
 			$('.haze').on('click', function(){
 				weatherHandler('Haze');
-			})
+			});
 			$('.sand').on('click', function(){
 				weatherHandler('Sand');
-			})
+			});
 		}
 	});
 				$(".what").click(function(){
