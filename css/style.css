@@ -12,7 +12,7 @@ body .navbar {
 	font-family: 'Poiret One', cursive;
 }
 .navbar-right a{
-  font-family: 'Bitter', serif;
+  font-family: 'Poiret One', cursive;
 }
 .wi{
   color:#fff;
@@ -86,7 +86,7 @@ body .navbar {
 }
 #weather span{
 	color:#fff;
-  font-family: 'Bitter', serif;
+  font-family: 'Poiret One', cursive;
   font-size: 1.5em;
 }
 .condition{
@@ -164,7 +164,7 @@ body .navbar {
   color:#fff;
 }
 .content > div span{
-  font-family: 'Bitter', serif;
+  font-family: 'Poiret One', cursive;
   color:#fff;
   font-size: 1em;
   margin-bottom: 1.5em;
@@ -195,7 +195,7 @@ footer i {
   -moz-animation-timing-function: linear;
 }
 
-@-webkit-keyframes pulse {    
+@-webkit-keyframes pulse {
   0% {
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -212,7 +212,7 @@ footer i {
   }
 }
 
-@-moz-keyframes pulse {    
+@-moz-keyframes pulse {
   0% {
     -moz-transform: scale(1);
     transform: scale(1);
