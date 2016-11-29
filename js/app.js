@@ -41,9 +41,9 @@ $(function(){
 						url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
 						beforeSend: function(xhrObj){
 							xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{c23cfb32ff35416083d4afc22518a3ba");
-							xhrObj.setRequestHeader("Access-Control-Allow-Origin:", "*");
             			},
 						type: "GET",
+						format: "jsonp",
 						data: "{body}"
 					})
 					.done(function(data) {
