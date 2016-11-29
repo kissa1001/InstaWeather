@@ -34,13 +34,13 @@ $(function(){
 						"q": city.cityName + " " + city.weather + " weather",
 						"count": "24",
 						"offset": "0",
-						"mkt": "en-us",
-						"safeSearch": "Moderate"
+						"mkt": "en-us"
 					};
 
 					$.ajax({
 						url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
 						beforeSend: function(xhrObj){
+							xhrObj.setRequestHeader("Content-Type","multipart/form-data");
                 			xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{c23cfb32ff35416083d4afc22518a3ba");
             			},
 						type: "GET",
