@@ -14,7 +14,7 @@ $(function(){
 					lattitude: result.coord.lat,
 					longitude: result.coord.lon,
 					weather: result.weather[0].main,
-					temp: result.main.temp
+					temp: result.main.temp.toFixed()
 				};
 			});
 			function weatherHandler(weather){
@@ -40,10 +40,10 @@ $(function(){
 					$.ajax({
 						url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?" + $.param(params),
 						beforeSend: function(xhrObj){
-							xhrObj.setRequestHeader("Content-Type","multipart/form-data");
-                			xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{c23cfb32ff35416083d4afc22518a3ba");
+							xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","{c23cfb32ff35416083d4afc22518a3ba");
             			},
 						type: "GET",
+						format: "jsonp",
 						data: "{body}"
 					})
 					.done(function(data) {
